@@ -1,0 +1,225 @@
+{% extends "dashboards/base_dashboard.html" %}
+
+{% block title %}Admin Dashboard – SATM{% endblock %}
+
+{% block content %}
+<div class="space-y-8">
+    <!-- Header Section -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div>
+            <h1 class="text-4xl font-extrabold text-white tracking-tight">Admin Dashboard</h1>
+            <p class="text-gray-400 mt-2">System Overview & Central Control Center</p>
+        </div>
+        <div class="flex flex-wrap gap-4">
+            <a href="{% url 'generate_timetable' %}"
+                class="flex items-center gap-3 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all duration-300 shadow-lg shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Generate Draft
+            </a>
+            <a href="{% url 'publish_timetable' %}"
+                class="flex items-center gap-3 px-6 py-3 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-400 border border-indigo-600/30 rounded-2xl transition-all duration-300"
+                onclick="return confirm('Are you sure? This publishes the draft to all student/lecturer portals.')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+                Share Externally
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-6 bg-gray-800/40 border border-gray-700/50 rounded-3xl backdrop-blur-md">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-blue-500/10 rounded-2xl text-blue-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-widest text-blue-400">Infrastructure</span>
+            </div>
+            <div class="text-4xl font-black text-white">{{ rooms_count }}</div>
+            <p class="text-gray-400 text-xs mt-1">Available Classrooms</p>
+        </div>
+
+        <div class="p-6 bg-gray-800/40 border border-gray-700/50 rounded-3xl backdrop-blur-md">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-indigo-500/10 rounded-2xl text-indigo-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-widest text-indigo-400">Curriculum</span>
+            </div>
+            <div class="text-4xl font-black text-white">{{ units_count }}</div>
+            <p class="text-gray-400 text-xs mt-1">Active Teaching Units</p>
+        </div>
+
+        <div class="p-6 bg-gray-800/40 border border-gray-700/50 rounded-3xl backdrop-blur-md">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-emerald-500/10 rounded-2xl text-emerald-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-widest text-emerald-400">Visibility</span>
+            </div>
+            <div class="text-4xl font-black text-white">{{ published_count }}</div>
+            <p class="text-gray-400 text-xs mt-1">Published Classes</p>
+        </div>
+
+        <div class="p-6 bg-gray-800/40 border border-gray-700/50 rounded-3xl backdrop-blur-md">
+            <div class="flex items-center justify-between mb-4">
+                <div class="p-3 bg-amber-500/10 rounded-2xl text-amber-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <span class="text-[10px] font-black uppercase tracking-widest text-amber-400">Sync Status</span>
+            </div>
+            <div class="text-xl font-black text-white mt-1">UP TO DATE</div>
+            <p class="text-gray-400 text-xs mt-2">Engine Hash Verified</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Main Activity Feed -->
+        <div class="lg:col-span-2 space-y-8">
+            <!-- Recent Automated Makeups -->
+            <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden backdrop-blur-md">
+                <div class="p-6 border-b border-gray-700/30 flex justify-between items-center">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Automated Makeup Audit Log
+                    </h2>
+                    <span
+                        class="text-[10px] bg-red-500/10 text-red-400 px-3 py-1 rounded-full font-black tracking-widest uppercase">Live</span>
+                </div>
+                <div class="divide-y divide-gray-700/30">
+                                        {% for makeup in recent_makeups %}
+                    <div class="p-6 hover:bg-white/5 transition-colors group">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center gap-3">
+                                <span class="px-2 py-1 bg-gray-900 border border-gray-700 text-gray-400 text-[10px] font-bold rounded-lg">{{ makeup.missed_report.timetable_entry.unit.code }}</span>
+                                <span class="text-gray-500 text-xs">{{ makeup.created_at|timesince }} ago</span>
+                            </div>
+                            <span class="px-3 py-1 bg-green-500/10 text-green-400 text-[10px] font-black tracking-widest uppercase rounded-full border border-green-500/20">Auto-Scheduled</span>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">{{ makeup.missed_report.timetable_entry.unit.name }}</h3>
+                        <p class="text-sm text-gray-400 mb-4">Slot allocated for <span class="text-white font-semibold">{{ makeup.allocated_date|date:"l, M d" }}</span> at <span class="text-white font-semibold">{{ makeup.allocated_time_slot.start_time|time:"H:i" }}</span> in <span class="text-white font-semibold">{{ makeup.allocated_room.name }}</span>.</p>
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center gap-2 text-[11px] text-gray-500">
+                                <div class="w-1.5 h-1.5 bg-gray-700 rounded-full"></div>
+                                Lecturer: {{ makeup.missed_report.timetable_entry.unit.lecturer.get_full_name|default:makeup.missed_report.timetable_entry.unit.lecturer.username }}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Master View Link -->
+            <a href="{% url 'master_timetable_view' %}"
+                class="group block p-8 bg-linear-to-br from-indigo-600 to-blue-600 rounded-3xl shadow-xl shadow-indigo-900/20 transform transition-all duration-300 hover:scale-[1.01] active:scale-[0.99] border border-white/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-black text-white mb-2 tracking-tight">Access Master Grid</h2>
+                        <p class="text-indigo-100/80 text-sm">Full visual representation of all groups, rooms, and
+                            sessions.</p>
+                    </div>
+                    <div class="p-4 bg-white/10 rounded-2xl text-white group-hover:translate-x-1 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="space-y-8">
+            <!-- Quick Actions -->
+            <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl p-6 backdrop-blur-md">
+                <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-400" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                    </svg>
+                    System Control
+                </h2>
+                <div class="space-y-3">
+                    <a href="/satm-admin/timetabling/unit/"
+                        class="flex items-center justify-between p-4 bg-gray-900/50 border border-gray-700/50 rounded-2xl hover:bg-gray-700 transition-colors group">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white">Manage Units</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="/satm-admin/timetabling/room/"
+                        class="flex items-center justify-between p-4 bg-gray-900/50 border border-gray-700/50 rounded-2xl hover:bg-gray-700 transition-colors group">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white">Room Allocation</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                    <a href="/satm-admin/users/user/"
+                        class="flex items-center justify-between p-4 bg-gray-900/50 border border-gray-700/50 rounded-2xl hover:bg-gray-700 transition-colors group">
+                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white">User Accounts</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Notification Center -->
+            <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl p-6 backdrop-blur-md">
+                <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    Alerts
+                </h2>
+                <div class="space-y-4">
+                    {% for note in notifications %}
+                    <div
+                        class="relative pl-6 before:absolute before:left-0 before:top-1.5 before:w-1.5 before:before:h-1.5 before:bg-blue-500 before:rounded-full">
+                        <h4 class="text-xs font-bold text-white">{{ note.title }}</h4>
+                        <p class="text-[10px] text-gray-500 mt-1 leading-relaxed">{{ note.message }}</p>
+                        <span class="text-[9px] text-gray-600 block mt-1">{{ note.created_at|timesince }} ago</span>
+                    </div>
+                    {% empty %}
+                    <p class="text-gray-600 text-xs italic text-center py-4">No new system alerts.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

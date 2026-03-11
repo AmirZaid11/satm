@@ -1,0 +1,360 @@
+{% extends 'dashboards/base_dashboard.html' %}
+{% load static %}
+
+{% block title %}Student Dashboard - SATM{% endblock %}
+
+{% block content %}
+<div class="space-y-8 animate-in fade-in duration-700">
+    <!-- Welcome Header -->
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="space-y-1">
+            <h1 class="text-4xl font-extrabold text-white tracking-tight">
+                Good {{ greeting }},
+                <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-400">
+                    {{ user.get_full_name|default:user.username }}
+                </span>
+            </h1>
+            <p class="text-gray-400 font-medium flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+                {{ user.course.name|default:"No Course Assigned" }} • Year {{ user.year }} Sem {{ user.semester }}
+            </p>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:block text-right">
+                <p class="text-xs text-gray-500 uppercase font-black tracking-widest">Active Profile</p>
+                <p class="text-white font-bold">{{ user.get_full_name|default:user.username }}</p>
+            </div>
+            <a href="{% url 'student_profile_update' %}" class="relative group">
+                <div
+                    class="w-16 h-16 bg-linear-to-tr from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-xl ring-2 ring-white/10 group-hover:ring-blue-400 group-hover:scale-105 transition-all duration-300 overflow-hidden">
+                    {% if user.profile_picture %}
+                    <img src="{{ user.profile_picture.url }}" alt="Profile" class="w-full h-full object-cover">
+                    {% else %}
+                    <span class="text-2xl font-black text-white">{{ user.username|slice:":1"|upper }}</span>
+                    {% endif %}
+                </div>
+                <!-- Small status indicator -->
+                <div
+                    class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-gray-900 rounded-full shadow-lg">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Actions & Next Class -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Next Class Highlight -->
+        <div
+            class="lg:col-span-2 relative group overflow-hidden bg-linear-to-br from-blue-600 to-indigo-700 rounded-3xl p-8 text-white shadow-2xl shadow-blue-900/40">
+            <div class="relative z-10 flex flex-col md:flex-row justify-between gap-8 h-full">
+                <div class="space-y-6">
+                    <div>
+                        <span
+                            class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-widest">
+                            {% if class_state == 'ongoing' %}
+                            Currently Ongoing
+                            {% elif class_state == 'next' %}
+                            Up Next
+                            {% elif class_state == 'future' %}
+                            See you next {{ class_day_name }}
+                            {% else %}
+                            Coming Up Next
+                            {% endif %}
+                        </span>
+                        <h2 class="text-3xl font-black mt-4 leading-tight">
+                            {% if next_class %}
+                            {{ next_class.unit.code }}<br>
+                            <span class="text-xl font-medium text-blue-100">{{ next_class.unit.name }}</span>
+                            {% else %}
+                            No more classes<br>
+                            <span class="text-xl font-medium text-blue-100">Enjoy your break!</span>
+                            {% endif %}
+                        </h2>
+                    </div>
+                    {% if next_class %}
+                    <div class="flex flex-wrap gap-6 items-center">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-white/10 rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-blue-200 uppercase font-bold">Start Time</p>
+                                <p class="font-bold">{{ next_class.time_slot.start_time|time:"H:i" }}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-white/10 rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-blue-200 uppercase font-bold">Location</p>
+                                <p class="font-bold">{{ next_class.room.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="flex flex-col justify-end">
+                    <a href="{% url 'student_profile_update' %}"
+                        class="px-6 py-3 bg-white text-blue-600 font-black rounded-xl hover:bg-blue-50 transition-all duration-300 transform hover:scale-105 active:scale-95 text-center">
+                        Update Profile
+                    </a>
+                </div>
+            </div>
+            <!-- Abstract background shape -->
+            <div
+                class="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl group-hover:bg-white/20 transition-all duration-500">
+            </div>
+        </div>
+
+        <!-- Timetable Export -->
+        <div
+            class="bg-gray-800/40 border border-gray-700/50 rounded-3xl p-8 flex flex-col justify-between backdrop-blur-md">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-2">Export Schedule</h3>
+                <p class="text-gray-400 text-sm mb-6">Take your timetable offline. Professional formats available.</p>
+            </div>
+            <div class="space-y-3">
+                <a href="{% url 'export_timetable' %}?format=excel"
+                    class="flex items-center justify-between w-full p-4 bg-green-500/10 border border-green-500/20 rounded-2xl hover:bg-green-500/20 transition-all duration-300 group">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-green-500/20 rounded-lg text-green-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold text-green-500">Excel Spreadsheet</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-green-500 transform group-hover:translate-x-1 transition-transform"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+                <a href="{% url 'export_timetable' %}?format=csv"
+                    class="flex items-center justify-between w-full p-4 bg-gray-700/50 border border-gray-600/30 rounded-2xl hover:bg-gray-700 transition-all duration-300 group">
+                    <div class="flex items-center gap-3">
+                        <div class="p-2 bg-gray-600/20 rounded-lg text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </div>
+                        <span class="text-sm font-bold text-gray-300">CSV Data Format</span>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4 text-gray-500 transform group-hover:translate-x-1 transition-transform"
+                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <!-- Timetable Section -->
+        <div class="lg:col-span-3 space-y-6">
+            <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden backdrop-blur-md">
+                <div class="p-6 border-b border-gray-700/30 flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-white flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-500" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        Weekly Timetable
+                    </h3>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] font-black text-gray-500 uppercase tracking-widest">Period</span>
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full text-xs font-black uppercase">
+                            Year {{ active_year }} • Sem {{ active_semester }}
+                        </span>
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-900/40">
+                                <th class="px-6 py-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">Day
+                                </th>
+                                <th class="px-6 py-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                                    Time</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                                    Unit & Lecturer</th>
+                                <th class="px-6 py-4 text-[10px] font-black text-gray-500 uppercase tracking-widest">
+                                    Room</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-700/30">
+                            {% for entry in entries %}
+                            <tr class="hover:bg-gray-700/20 transition-colors group">
+                                <td class="px-6 py-5">
+                                    <span class="text-gray-200 font-bold">{{ entry.time_slot.day }}</span>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="text-sm font-medium text-gray-300">
+                                        {{ entry.time_slot.start_time|time:"H:i" }}
+                                    </div>
+                                    <div class="text-[10px] text-gray-500">
+                                        — {{ entry.time_slot.end_time|time:"H:i" }}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <div class="text-white font-bold group-hover:text-blue-400 transition-colors">
+                                        {{ entry.unit.code }}
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-0.5">
+                                        {{ entry.unit.name }}
+                                    </div>
+                                    <div class="text-[10px] text-blue-500/70 font-medium mt-1">
+                                        {% if entry.unit.lecturer %}
+                                        Prof. {{ entry.unit.lecturer.get_full_name|default:entry.unit.lecturer.username
+                                        }}
+                                        {% else %}
+                                        Unassigned
+                                        {% endif %}
+                                    </div>
+                                </td>
+                                <td class="px-6 py-5">
+                                    <span
+                                        class="px-3 py-1 bg-gray-900/60 border border-gray-700/50 rounded-lg text-xs font-bold text-gray-400 uppercase tracking-tight">
+                                        {{ entry.room.name }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="4" class="px-6 py-20 text-center">
+                                    <div class="flex flex-col items-center justify-center space-y-4">
+                                        <div class="p-4 bg-gray-700/20 rounded-full">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-600"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
+                                        <div class="space-y-1">
+                                            <p class="text-xl font-bold text-gray-500">No classes found</p>
+                                            <p class="text-sm text-gray-600">Your timetable will appear here once
+                                                generated.</p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar: Notifications -->
+        <div class="space-y-8">
+            <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl p-6 backdrop-blur-md">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-bold text-white flex items-center gap-3">
+                        <div class="relative">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-400" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
+                            {% if notifications %}
+                            <div class="absolute -top-1 -right-1 w-2 h-2 bg-rose-500 rounded-full animate-ping"></div>
+                            <div class="absolute -top-1 -right-1 w-2 h-2 bg-rose-500 rounded-full"></div>
+                            {% endif %}
+                        </div>
+                        Updates
+                    </h3>
+                    <span
+                        class="px-2 py-0.5 bg-indigo-500/10 text-indigo-400 text-[10px] font-black rounded-lg">LIVE</span>
+                </div>
+
+                <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    {% for note in notifications %}
+                    <div
+                        class="p-4 bg-gray-900/60 border-l-4 border-l-indigo-500 border border-gray-700/30 rounded-r-xl space-y-2 hover:bg-gray-900 transition-colors">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-black text-white leading-tight uppercase tracking-tight">
+                                {{ note.title }}
+                            </p>
+                            <span class="text-[9px] text-gray-600 font-bold">{{ note.created_at|timesince }} ago</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 leading-relaxed">{{ note.message }}</p>
+                    </div>
+                    {% empty %}
+                    <div class="text-center py-10 space-y-2">
+                        <div class="w-12 h-12 bg-gray-700/20 rounded-full flex items-center justify-center mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-700" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <p class="text-xs text-gray-500 font-medium">No new updates. You're all caught up!</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Profile Overview Small -->
+            <div
+                class="relative group bg-linear-to-br from-indigo-900/40 to-slate-900/40 border border-white/5 rounded-3xl p-6 backdrop-blur-md overflow-hidden hover:border-indigo-500/30 transition-all duration-500">
+                <div class="relative z-10 flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 bg-linear-to-tr from-indigo-500 to-purple-500 rounded-2xl flex items-center justify-center text-white font-black text-lg shadow-lg">
+                        {{ user.username|slice:":1"|upper }}
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-black text-white">{{ user.get_full_name|default:user.username }}</h4>
+                        <p class="text-[10px] text-gray-400 font-medium">Computer Science Student</p>
+                    </div>
+                </div>
+                <div
+                    class="absolute top-0 right-0 w-24 h-24 bg-indigo-500/5 rounded-full blur-2xl group-hover:bg-indigo-500/10 transition-all duration-700">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #1f2937;
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #374151;
+    }
+</style>
+{% endblock %}

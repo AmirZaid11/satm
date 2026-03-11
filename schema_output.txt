@@ -1,0 +1,5 @@
+--- Table Schema: timetabling_unit ---
+CREATE TABLE "timetabling_unit" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(150) NOT NULL, "code" varchar(20) NOT NULL, "duration_hours" integer unsigned NOT NULL CHECK ("duration_hours" >= 0), "lecturer_id" bigint NULL REFERENCES "users_user" ("id") DEFERRABLE INITIALLY DEFERRED, "semester" smallint unsigned NOT NULL CHECK ("semester" >= 0), "students_count" integer unsigned NOT NULL CHECK ("students_count" >= 0), "year" smallint unsigned NOT NULL CHECK ("year" >= 0))
+
+--- Table Schema: timetabling_unit_courses ---
+CREATE TABLE "timetabling_unit_courses" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "unit_id" bigint NOT NULL REFERENCES "timetabling_unit" ("id") DEFERRABLE INITIALLY DEFERRED, "course_id" bigint NOT NULL REFERENCES "timetabling_course" ("id") DEFERRABLE INITIALLY DEFERRED)

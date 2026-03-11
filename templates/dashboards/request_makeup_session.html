@@ -1,0 +1,78 @@
+{% extends 'dashboards/base_dashboard.html' %}
+{% load static %}
+
+{% block title %}Request Makeup Session - SATM{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="mb-8 flex items-center gap-4">
+        <a href="{% url 'lecturer_dashboard' %}"
+            class="p-2 hover:bg-gray-800 rounded-xl text-gray-400 hover:text-white transition-all">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </a>
+        <div>
+            <h1 class="text-3xl font-bold text-white">Request Makeup</h1>
+            <p class="text-gray-400 mt-1">Schedule a makeup session for a missed class.</p>
+        </div>
+    </div>
+
+    <!-- Context Card -->
+    <div class="mb-8 p-6 bg-blue-600/10 border border-blue-500/20 rounded-2xl backdrop-blur-sm">
+        <h3 class="text-blue-400 font-bold text-sm mb-4 uppercase tracking-wider">Missed Session Details:</h3>
+        <div class="grid grid-cols-2 gap-4">
+            <div>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Unit</p>
+                <p class="text-white font-bold">{{ report.timetable_entry.unit.code }} - {{ report.timetable_entry.unit.name }}</p>
+            </div>
+            <div>
+                <p class="text-xs text-gray-500 uppercase font-semibold">Missed Date</p>
+                <p class="text-white font-bold">{{ report.date|date:"M d, Y" }}</p>
+            </div>
+            <div class="col-span-2">
+                <p class="text-xs text-gray-500 uppercase font-semibold">Reason Reported</p>
+                <p class="text-gray-300 italic text-sm">{{ report.reason }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-gray-800/40 border border-gray-700/50 rounded-2xl overflow-hidden backdrop-blur-sm p-8">
+        <form method="post" class="space-y-6">
+            {% csrf_token %}
+
+            <div class="space-y-2">
+                <label for="preferred_days" class="text-sm font-semibold text-gray-300 ml-1">Preferred Days</label>
+                <input type="text" name="preferred_days" id="preferred_days" required
+                    placeholder="e.g. Monday, Wednesday"
+                    class="w-full bg-gray-900/60 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+            </div>
+
+            <div class="space-y-2">
+                <label for="preferred_times" class="text-sm font-semibold text-gray-300 ml-1">Preferred Times</label>
+                <input type="text" name="preferred_times" id="preferred_times" required
+                    placeholder="e.g. Afternoon (after 2 PM)"
+                    class="w-full bg-gray-900/60 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+            </div>
+
+            <div class="space-y-2">
+                <label for="duration_hours" class="text-sm font-semibold text-gray-300 ml-1">Duration (Hours)</label>
+                <input type="number" name="duration_hours" id="duration_hours" value="2" min="1" max="5" required
+                    class="w-full bg-gray-900/60 border border-gray-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 transition-all">
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                <button type="submit"
+                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl transition-all duration-300 shadow-lg shadow-blue-900/20 hover:scale-[1.02] active:scale-[0.98]">
+                    Submit Request
+                </button>
+                <a href="{% url 'lecturer_dashboard' %}"
+                    class="flex-1 bg-gray-700/50 hover:bg-gray-700/80 text-white font-bold py-4 rounded-xl transition-all duration-300 text-center flex items-center justify-center">
+                    Cancel
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

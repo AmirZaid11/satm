@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SATM – Smart Automated Timetabling System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            color: white;
+        }
+
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header -->
+    <header class="py-8 px-6 md:px-12 border-b border-white/10">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <h1 class="text-4xl font-bold serif tracking-tight text-white">SATM</h1>
+            <p class="text-lg text-gray-300">Maseno University | Computer Science Department</p>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <main class="grow flex items-center justify-center px-6 py-20">
+        <div class="max-w-5xl text-center space-y-12">
+            <div>
+                <h2 class="text-5xl md:text-7xl font-bold serif text-white tracking-tight">
+                    Intelligent Timetabling<br>for the Future
+                </h2>
+                <!-- <p class="mt-6 text-2xl md:text-3xl font-light text-gray-300">
+                    Clash-free, preference-aware scheduling built for Maseno University
+                </p> -->
+            </div>
+
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <a href="{% url 'login' %}"
+                    class="group bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-10 hover:border-blue-500 hover:bg-white/10 transition-all duration-300 hover:scale-[1.03]">
+                    <div class="text-6xl mb-6 text-blue-400">👑</div>
+                    <h3 class="text-2xl font-semibold mb-4">Admin Portal</h3>
+                    <p class="text-gray-400 mb-6">Full system control, timetable generation, analytics</p>
+                    <span class="inline-flex items-center text-blue-400 font-medium group-hover:text-blue-300">
+                        Admin Login →
+                    </span>
+                </a>
+
+                <a href="{% url 'login' %}"
+                    class="group bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-10 hover:border-green-500 hover:bg-white/10 transition-all duration-300 hover:scale-[1.03]">
+                    <div class="text-6xl mb-6 text-green-400">👨‍🏫</div>
+                    <h3 class="text-2xl font-semibold mb-4">Lecturer Portal</h3>
+                    <p class="text-gray-400 mb-6">Personal timetable, report missed classes, preferences</p>
+                    <span class="inline-flex items-center text-green-400 font-medium group-hover:text-green-300">
+                        Lecturer Login →
+                    </span>
+                </a>
+
+                <a href="{% url 'login' %}"
+                    class="group bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-10 hover:border-purple-500 hover:bg-white/10 transition-all duration-300 hover:scale-[1.03]">
+                    <div class="text-6xl mb-6 text-purple-400">🎓</div>
+                    <h3 class="text-2xl font-semibold mb-4">Student Portal</h3>
+                    <p class="text-gray-400 mb-6">View your timetable, receive notifications, download schedule</p>
+                    <span class="inline-flex items-center text-purple-400 font-medium group-hover:text-purple-300">
+                        Student Login →
+                    </span>
+                </a>
+            </div>
+
+
+
+
+
+
+            <!-- <div class="mt-16 text-lg text-gray-300">
+                Developed by <strong>Ernest Eddy Ojwang</strong><br>
+                ADM: CCS/00061/021
+            </div> -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-10 text-center text-gray-500 text-sm border-t border-white/5">
+        © 2026 SATM – Smart Automated Timetabling System<br>
+        Department of Computer Science, Maseno University
+    </footer>
+
+</body>
+
+</html>

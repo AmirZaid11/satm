@@ -1,0 +1,41 @@
+/* Custom Admin Styles - Modern & Professional */
+:root {
+    --primary-600: #0284c7;
+    --primary-700: #0369a1;
+}
+
+/* Glassmorphism effects for cards and headers */
+.unfold .card,
+.unfold .module {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(226, 232, 240, 0.5) !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unfold .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Polished inputs */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select,
+textarea {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-600) !important;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2) !important;
+}
+
+/* Soft transitions for sidebar items */
+.unfold aside a {
+    transition: background-color 0.2s ease, color 0.2s ease;
+}

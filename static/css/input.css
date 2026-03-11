@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+/* Scan all template files for utility classes */
+@source "../../templates/**/*.html";
+@source "../../**/templates/**/*.html";

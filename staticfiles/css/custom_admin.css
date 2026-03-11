@@ -1,0 +1,23 @@
+/* Custom Admin Styles */
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.5rem;
+    margin-top: 0.25rem;
+    background-color: #fff;
+}
+
+.dark input[type="text"], .dark input[type="password"], .dark input[type="email"], .dark select, .dark textarea {
+    background-color: #334155;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    --tw-ring-offset-width: 2px;
+    --tw-ring-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}

@@ -1,0 +1,73 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | SATM Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="{% static 'css/custom_admin.css' %}" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .dark .card {
+            background: #1e293b;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="card max-w-md w-full p-10">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-gray-900 dark:text-white">SATM Admin</h2>
+                <p class="mt-2 text-gray-600 dark:text-gray-300">Sign in to manage timetables</p>
+            </div>
+
+            {% if form.errors %}
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-6" role="alert">
+                <strong>Error:</strong> Invalid username or password.
+            </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'admin:login' %}">
+                {% csrf_token %}
+
+                <div class="mb-6">
+                    <label class="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
+                        for="{{ form.username.id_for_label }}">Username</label>
+                    {{ form.username }}
+                </div>
+
+                <div class="mb-8">
+                    <label class="block text-gray-700 dark:text-gray-300 mb-2 font-medium"
+                        for="{{ form.password.id_for_label }}">Password</label>
+                    {{ form.password }}
+                </div>
+
+                <button type="submit"
+                    class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition duration-200">
+                    Log In →
+                </button>
+
+                <input type="hidden" name="next" value="{{ next }}">
+            </form>
+
+            <p class="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
+                © 2026 SATM - Smart Automated Timetabling System
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
