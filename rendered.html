@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <form action="/logout/" method="post">
-                        <input type="hidden" name="csrfmiddlewaretoken" value="3xWsDz5UA0HQ5yzJB0eYLhUfQO4gOjwTeBIXMRt7KldfGfvftolTbUW0mrwXMFF6">
+                        <input type="hidden" name="csrfmiddlewaretoken" value="auKZDn6poUYX5Hr0JDMWm4xrErBXdt4KJxkK48rRScl0E8fvcWMApROWV0RoQnaB">
                         <button type="submit" class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-lg transition">
                             Logout
                         </button>
@@ -46,7 +46,7 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
         <div class="space-y-1">
             <h1 class="text-4xl font-extrabold text-white tracking-tight">
-                Good Afternoon,
+                Good Evening,
                 <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-400">
                     ERNEST 1
                 </span>
@@ -96,8 +96,8 @@
                         </span>
                         <h2 class="text-3xl font-black mt-4 leading-tight">
                             
-                            MAS 102<br>
-                            <span class="text-xl font-medium text-blue-100">Probability and Distribution Theory I</span>
+                            MMA 116<br>
+                            <span class="text-xl font-medium text-blue-100">Linear Algebra 1</span>
                             
                         </h2>
                     </div>
@@ -113,7 +113,7 @@
                             </div>
                             <div>
                                 <p class="text-[10px] text-blue-200 uppercase font-bold">Start Time</p>
-                                <p class="font-bold">15:00</p>
+                                <p class="font-bold">17:00</p>
                             </div>
                         </div>
                         <div class="flex items-center gap-3">
@@ -128,7 +128,7 @@
                             </div>
                             <div>
                                 <p class="text-[10px] text-blue-200 uppercase font-bold">Location</p>
-                                <p class="font-bold">Lecture Hall B</p>
+                                <p class="font-bold">Computer Lab 2</p>
                             </div>
                         </div>
                     </div>
@@ -202,42 +202,6 @@
         <!-- Timetable Section -->
         <div class="lg:col-span-3 space-y-6">
             <!-- Scheduled Makeup Classes Section -->
-            
-            <div
-                class="bg-gray-800/40 border border-red-500/20 rounded-3xl overflow-hidden backdrop-blur-sm shadow-lg shadow-red-900/10 mb-6">
-                <div class="p-6 border-b border-red-500/20 bg-red-500/5">
-                    <h2 class="text-xl font-bold text-red-500 flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Upcoming Makeup Classes
-                    </h2>
-                </div>
-                <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    
-                    <div
-                        class="p-4 bg-red-950/20 border border-red-500/30 rounded-2xl hover:bg-red-900/30 transition-colors">
-                        <div class="flex justify-between items-start mb-2">
-                            <span
-class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wider uppercase rounded-md">CIR 106</span>
-<span class="text-[10px] text-red-400 font-bold bg-red-500/10 px-2 py-0.5 rounded">Computer Lab 1</span>
-                        </div>
-<h3 class="text-sm font-bold text-white mb-2">Database Systems</h3>
-                        <div class="flex items-center gap-2 text-xs text-gray-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-red-400" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            Friday, Mar 13 at {{
-                            makeup.allocated_time_slot.start_time|time:"H:i" }}
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
             
 
             <div class="bg-gray-800/40 border border-gray-700/50 rounded-3xl overflow-hidden backdrop-blur-md">
@@ -313,6 +277,78 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                CIR 102</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Discrete Structures II">Discrete Structures II</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    S
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="SMASS">
+                                                    SMASS
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                CIR 102</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Discrete Structures II">Discrete Structures II</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    S
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="SMASS">
+                                                    SMASS
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
                                                 CIR 104</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
                                                 title="Object Oriented programming I">Object Oriented programming I</div>
@@ -320,8 +356,8 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall B">
-                                                Lecture Hall B
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -349,51 +385,31 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                CIR 102</div>
+                                                PHT 112</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Discrete Structures II">Discrete Structures II</div>
+                                                title="HIV and AIDS Determinants prevention and management">HIV and AIDS Determinants prevention and management</div>
                                         </div>
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall A">
-                                                Lecture Hall A
+                                                title="Lecture Hall B">
+                                                Lecture Hall B
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
                                                 
                                                 <div
                                                     class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    S
+                                                    O
                                                 </div>
                                                 <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="SMASS">
-                                                    SMASS
+                                                    title="Online">
+                                                    Online
                                                 </span>
                                                 
                                                 
                                             </div>
                                         </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
                                     </div>
                                     
                                 </td>
@@ -430,35 +446,19 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                 <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
                                     
                                     <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                CIR 106</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Database Systems">Database Systems</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall A">
-                                                Lecture Hall A
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    A
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="Mr. Adongo">
-                                                    Mr. Adongo
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
                                     </div>
                                     
                                 </td>
@@ -470,62 +470,26 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                PHT 112</div>
+                                                MMA 102</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="HIV and AIDS Determinants prevention and management">HIV and AIDS Determinants prevention and management</div>
+                                                title="Calculus 1">Calculus 1</div>
                                         </div>
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Room 101">
-                                                Room 101
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
                                                 
                                                 <div
                                                     class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    O
+                                                    S
                                                 </div>
                                                 <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="Online">
-                                                    Online
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                PHT 112</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="HIV and AIDS Determinants prevention and management">HIV and AIDS Determinants prevention and management</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Computer Lab 1">
-                                                Computer Lab 1
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    O
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="Online">
-                                                    Online
+                                                    title="SMASS">
+                                                    SMASS
                                                 </span>
                                                 
                                                 
@@ -552,42 +516,6 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                MAS 102</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Probability and Distribution Theory I">Probability and Distribution Theory I</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall B">
-                                                Lecture Hall B
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    S
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="SMASS">
-                                                    SMASS
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
                                                 CIR 106</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
                                                 title="Database Systems">Database Systems</div>
@@ -595,8 +523,8 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Room 102">
-                                                Room 102
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -617,6 +545,16 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                     
                                 </td>
                                 
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
+                                    </div>
+                                    
+                                </td>
+                                
                             </tr>
                             
                             <tr class="hover:bg-gray-800/40 transition-colors group">
@@ -629,35 +567,9 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                 <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
                                     
                                     <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                MAS 102</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Probability and Distribution Theory I">Probability and Distribution Theory I</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Room 101">
-                                                Room 101
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    S
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="SMASS">
-                                                    SMASS
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
                                     </div>
                                     
                                 </td>
@@ -676,80 +588,8 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall B">
-                                                Lecture Hall B
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    S
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="SMASS">
-                                                    SMASS
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                CCS 122</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Electronics">Electronics</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall B">
-                                                Lecture Hall B
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    M
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="Dr. McOyowo">
-                                                    Dr. McOyowo
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                MMA 102</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Calculus 1">Calculus 1</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Computer Lab 1">
-                                                Computer Lab 1
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -816,6 +656,78 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                     
                                 </td>
                                 
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                CCS 122</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Electronics">Electronics</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    M
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="Dr. McOyowo">
+                                                    Dr. McOyowo
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                MMA 116</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Linear Algebra 1">Linear Algebra 1</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    S
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="SMASS">
+                                                    SMASS
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
                             </tr>
                             
                             <tr class="hover:bg-gray-800/40 transition-colors group">
@@ -832,6 +744,52 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                CIR 106</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Database Systems">Database Systems</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    A
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="Mr. Adongo">
+                                                    Mr. Adongo
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
                                                 CIR 104</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
                                                 title="Object Oriented programming I">Object Oriented programming I</div>
@@ -839,8 +797,8 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Computer Lab 1">
-                                                Computer Lab 1
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -868,117 +826,6 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                CCS 122</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Electronics">Electronics</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall A">
-                                                Lecture Hall A
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    M
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="Dr. McOyowo">
-                                                    Dr. McOyowo
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                MMA 116</div>
-                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Linear Algebra 1">Linear Algebra 1</div>
-                                        </div>
-                                        <div class="mt-4 space-y-3">
-                                            <span
-                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall B">
-                                                Lecture Hall B
-                                            </span>
-                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
-                                                
-                                                
-                                                <div
-                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
-                                                    S
-                                                </div>
-                                                <span class="text-xs font-semibold text-gray-300 truncate"
-                                                    title="SMASS">
-                                                    SMASS
-                                                </span>
-                                                
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr class="hover:bg-gray-800/40 transition-colors group">
-                                <td
-                                    class="px-6 py-4 font-black text-white uppercase tracking-wider border-r border-gray-800 bg-gray-900/40 align-middle text-center w-12 sticky left-0 z-10 shadow-r">
-                                    <div class="-rotate-90 tracking-widest">Fri</div>
-                                </td>
-
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
-                                        <div>
-                                            <div
-                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
                                                 CIR 108</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
                                                 title="Systems Analysis and Design">Systems Analysis and Design</div>
@@ -986,8 +833,8 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall A">
-                                                Lecture Hall A
+                                                title="Room 102">
+                                                Room 102
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -1021,26 +868,6 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                 <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
                                     
                                     <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
-                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
-                                        <span
-                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
-                                    </div>
-                                    
-                                </td>
-                                
-                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
-                                    
-                                    <div
                                         class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
                                         <div>
                                             <div
@@ -1052,8 +879,89 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                         <div class="mt-4 space-y-3">
                                             <span
                                                 class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
-                                                title="Lecture Hall A">
-                                                Lecture Hall A
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    S
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="SMASS">
+                                                    SMASS
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                            </tr>
+                            
+                            <tr class="hover:bg-gray-800/40 transition-colors group">
+                                <td
+                                    class="px-6 py-4 font-black text-white uppercase tracking-wider border-r border-gray-800 bg-gray-900/40 align-middle text-center w-12 sticky left-0 z-10 shadow-r">
+                                    <div class="-rotate-90 tracking-widest">Fri</div>
+                                </td>
+
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                CCS 122</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Electronics">Electronics</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    M
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="Dr. McOyowo">
+                                                    Dr. McOyowo
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                MAS 102</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Probability and Distribution Theory I">Probability and Distribution Theory I</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Computer Lab 2">
+                                                Computer Lab 2
                                             </span>
                                             <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
                                                 
@@ -1077,13 +985,23 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                 <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
                                     
                                     <div
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
                                         class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
                                         <div>
                                             <div
                                                 class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
-                                                CIR 102</div>
+                                                PHT 112</div>
                                             <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
-                                                title="Discrete Structures II">Discrete Structures II</div>
+                                                title="HIV and AIDS Determinants prevention and management">HIV and AIDS Determinants prevention and management</div>
                                         </div>
                                         <div class="mt-4 space-y-3">
                                             <span
@@ -1096,6 +1014,42 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                                 
                                                 <div
                                                     class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
+                                                    O
+                                                </div>
+                                                <span class="text-xs font-semibold text-gray-300 truncate"
+                                                    title="Online">
+                                                    Online
+                                                </span>
+                                                
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="bg-gray-800/80 border border-gray-700 rounded-xl p-4 shadow-md h-full flex flex-col justify-between hover:border-blue-500/50 transition-colors group/card">
+                                        <div>
+                                            <div
+                                                class="font-black text-white text-base mb-1 group-hover/card:text-blue-400 transition-colors">
+                                                MAS 102</div>
+                                            <div class="text-xs text-gray-400 font-medium leading-snug line-clamp-2"
+                                                title="Probability and Distribution Theory I">Probability and Distribution Theory I</div>
+                                        </div>
+                                        <div class="mt-4 space-y-3">
+                                            <span
+                                                class="inline-block px-3 py-1.5 bg-gray-900/80 border border-gray-700/80 rounded-lg text-[11px] font-black tracking-wide text-blue-300 w-full text-center truncate"
+                                                title="Lecture Hall B">
+                                                Lecture Hall B
+                                            </span>
+                                            <div class="flex items-center gap-2 pt-1 border-t border-gray-700/50">
+                                                
+                                                
+                                                <div
+                                                    class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-[10px] ring-1 ring-indigo-500/50 shrink-0">
                                                     S
                                                 </div>
                                                 <span class="text-xs font-semibold text-gray-300 truncate"
@@ -1106,6 +1060,16 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                                                 
                                             </div>
                                         </div>
+                                    </div>
+                                    
+                                </td>
+                                
+                                <td class="p-3 border-r border-gray-800/50 last:border-r-0 align-top">
+                                    
+                                    <div
+                                        class="h-full min-h-[120px] flex items-center justify-center border-2 border-dashed border-gray-800/40 rounded-xl bg-gray-900/10 opacity-50 group-hover:opacity-100 transition-opacity">
+                                        <span
+                                            class="text-gray-600 text-[10px] font-bold uppercase tracking-widest">—</span>
                                     </div>
                                     
                                 </td>
@@ -1144,13 +1108,57 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
 
                 <div class="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                     
+                    <div id="notification-105"
+                        class="p-4 bg-gray-900/60 border-l-4 border-l-indigo-500 border border-gray-700/30 rounded-r-xl space-y-2 hover:bg-gray-900 transition-colors group relative">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6">
+                                Makeup Scheduled: CIR 106
+                            </p>
+                            <span class="text-[9px] text-gray-600 font-bold">21 hours, 52 minutes ago</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 leading-relaxed">Makeup class for Database Systems on March 11 at 07:00 in Computer Lab 1.</p>
+
+                        <!-- Delete Option -->
+                        <button onclick="deleteNotification(105)"
+                            class="absolute top-3 right-3 p-1.5 text-gray-600 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200"
+                            title="Dismiss update">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                    
+                    <div id="notification-79"
+                        class="p-4 bg-gray-900/60 border-l-4 border-l-indigo-500 border border-gray-700/30 rounded-r-xl space-y-2 hover:bg-gray-900 transition-colors group relative">
+                        <div class="flex justify-between items-start">
+                            <p class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6">
+                                Class Cancellation: CIR 106
+                            </p>
+                            <span class="text-[9px] text-gray-600 font-bold">21 hours, 52 minutes ago</span>
+                        </div>
+                        <p class="text-[10px] text-gray-400 leading-relaxed">The class for Database Systems on 2026-03-10 has been report as missed/cancelled. A makeup session will be scheduled automatically soon.</p>
+
+                        <!-- Delete Option -->
+                        <button onclick="deleteNotification(79)"
+                            class="absolute top-3 right-3 p-1.5 text-gray-600 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-200"
+                            title="Dismiss update">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                            </svg>
+                        </button>
+                    </div>
+                    
                     <div id="notification-51"
                         class="p-4 bg-gray-900/60 border-l-4 border-l-indigo-500 border border-gray-700/30 rounded-r-xl space-y-2 hover:bg-gray-900 transition-colors group relative">
                         <div class="flex justify-between items-start">
                             <p class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6">
                                 Makeup Scheduled: CIR 106
                             </p>
-                            <span class="text-[9px] text-gray-600 font-bold">3 hours, 59 minutes ago</span>
+                            <span class="text-[9px] text-gray-600 font-bold">1 day, 5 hours ago</span>
                         </div>
                         <p class="text-[10px] text-gray-400 leading-relaxed">Makeup class for Database Systems on March 13 at 11:00 in Computer Lab 1.</p>
 
@@ -1172,7 +1180,7 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
                             <p class="text-[11px] font-black text-white leading-tight uppercase tracking-tight pr-6">
                                 Class Cancelled: CIR 106
                             </p>
-                            <span class="text-[9px] text-gray-600 font-bold">3 hours, 59 minutes ago</span>
+                            <span class="text-[9px] text-gray-600 font-bold">1 day, 5 hours ago</span>
                         </div>
                         <p class="text-[10px] text-gray-400 leading-relaxed">The class for Database Systems on 2026-03-10 has been reported as missed. Reason: sick</p>
 
@@ -1239,7 +1247,7 @@ class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-black tracking-wi
             const response = await fetch(`/notification/delete/${noteId}/`, {
                 method: 'POST',
                 headers: {
-                    'X-CSRFToken': '3xWsDz5UA0HQ5yzJB0eYLhUfQO4gOjwTeBIXMRt7KldfGfvftolTbUW0mrwXMFF6',
+                    'X-CSRFToken': 'auKZDn6poUYX5Hr0JDMWm4xrErBXdt4KJxkK48rRScl0E8fvcWMApROWV0RoQnaB',
                     'Content-Type': 'application/json'
                 }
             });

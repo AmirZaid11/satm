@@ -120,18 +120,36 @@ def lecturer_dashboard(request):
     year_filter = request.GET.get('year')
     semester_filter = request.GET.get('semester')
 
-    # Get lecturer's timetable entries (only published)
-    entries = TimetableEntry.objects.filter(unit__lecturer=request.user, is_published=True).select_related('unit', 'room', 'time_slot').order_by('time_slot__day', 'time_slot__start_time')
+    # Get lecturer's timetable entries (Show ALL assigned, not just published, for the lecturer to see their schedule)
+    raw_entries = TimetableEntry.objects.filter(
+        unit__lecturer=request.user
+    ).select_related('unit', 'room', 'time_slot').order_by('time_slot__day', 'time_slot__start_time')
     
     # Get units assigned to this lecturer
     from timetabling.models import Unit
     assigned_units = Unit.objects.filter(lecturer=request.user).prefetch_related('courses')
 
-    # Apply filters to assigned_units
+    # Apply filters to assigned_units (for the "Your Units" sidebar)
     if year_filter and year_filter.isdigit():
         assigned_units = assigned_units.filter(year=int(year_filter))
     if semester_filter and semester_filter.isdigit():
         assigned_units = assigned_units.filter(semester=int(semester_filter))
+
+    # Structure data for the HTML Grid (Day -> Time -> Entry)
+    days_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+    all_time_objs = sorted(list(set(e.time_slot.start_time for e in raw_entries)))
+    
+    from datetime import time
+    if not all_time_objs:
+        all_time_objs = [time(7,0), time(9,0), time(11,0), time(13,0), time(15,0), time(17,0)]
+
+    timetable_data = {day: {t: None for t in all_time_objs} for day in days_order}
+    
+    for entry in raw_entries:
+        day = entry.time_slot.day
+        t = entry.time_slot.start_time
+        if day in timetable_data:
+            timetable_data[day][t] = entry
 
     # Get recent missed class reports
     missed_reports = MissedClassReport.objects.filter(timetable_entry__unit__lecturer=request.user).order_by('-reported_at')[:5]
@@ -146,7 +164,9 @@ def lecturer_dashboard(request):
     ).select_related('missed_report__timetable_entry__unit', 'allocated_time_slot', 'allocated_room').order_by('allocated_date', 'allocated_time_slot__start_time')
 
     context = {
-        'entries': entries,
+        'timetable_data': timetable_data,
+        'all_times': all_time_objs,
+        'entries': raw_entries,  # Add this for stats.count
         'assigned_units': assigned_units,
         'missed_reports': missed_reports,
         'makeup_classes': makeup_classes,
@@ -326,18 +346,19 @@ def student_dashboard(request):
     if request.user.course:
         queryset = TimetableEntry.objects.filter(unit__courses=request.user.course, is_published=True)
         
-        # In 'department' view, we might want to see everything unless filtered
+        # In 'individual' view, filter by the student's current year/semester
         if view_type == 'individual':
             queryset = queryset.filter(unit__year=active_year, unit__semester=active_sem)
         else:
-            # Department view: allow filtering but default to empty filters if not specified?
-            # Actually, user said: "i can view for my year 1"
+            # Department view: allow explicit filtering
             if request.GET.get('year'):
                 queryset = queryset.filter(unit__year=request.GET.get('year'))
             if request.GET.get('semester'):
                 queryset = queryset.filter(unit__semester=request.GET.get('semester'))
         
-    raw_entries = queryset.select_related('unit', 'room', 'time_slot').distinct().order_by('time_slot__day', 'time_slot__start_time')
+        raw_entries = queryset.select_related('unit', 'room', 'time_slot').distinct().order_by('time_slot__day', 'time_slot__start_time')
+    else:
+        raw_entries = TimetableEntry.objects.none()
 
     # 1. Structure data for the HTML Grid (Day -> Time -> Entry)
     days_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
